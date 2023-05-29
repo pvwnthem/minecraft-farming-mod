@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "minecraft:block/farmers_workbench_bottom",
-    "east": "minecraft:block/farmers_workbench_side",
-    "north": "minecraft:block/farmers_workbench_front",
-    "particle": "minecraft:block/farmers_workbench_front",
-    "south": "minecraft:block/farmers_workbench_front",
-    "up": "minecraft:block/farmers_workbench_top",
-    "west": "minecraft:block/farmers_workbench_side"
+    "down": "farmingmod:block/farmers_workbench_bottom",
+    "east": "farmingmod:block/farmers_workbench_side",
+    "north": "farmingmod:block/farmers_workbench_front",
+    "particle": "farmingmod:block/farmers_workbench_front",
+    "south": "farmingmod:block/farmers_workbench_front",
+    "up": "farmingmod:block/farmers_workbench_top",
+    "west": "farmingmod:block/farmers_workbench_side"
 
   }
 }
