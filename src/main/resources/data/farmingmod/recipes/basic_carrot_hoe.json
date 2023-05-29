@@ -2,17 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "CCC",
-    "C C",
+    "CHC",
     "CCC"
   ],
   "key": {
     "C": {
-      "item": "minecraft:carrot"
+      "item": "farmingmod:enchanted_golden_carrot"
+    },
+    "H": {
+      "item": "minecraft:diamond_hoe"
     }
 
   },
   "result": {
-    "item": "farmingmod:enchanted_carrot",
+    "item": "farmingmod:basic_carrot_hoe",
     "count": 1
   }
 }
