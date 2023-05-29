@@ -65,8 +65,6 @@ public class ModEvents {
             }
 
 
-                    //.getDisplayName().getString().contains("Basic")
-
         }
     }
 
