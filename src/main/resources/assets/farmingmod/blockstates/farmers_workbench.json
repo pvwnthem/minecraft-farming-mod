@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model": "farmingmod:block/farmers_workbench"}
+  }
+}

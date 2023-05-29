@@ -1,9 +1,11 @@
 package com.twobyone.farmingmod;
 
 import com.mojang.logging.LogUtils;
+import com.twobyone.farmingmod.block.ModBlocks;
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.creativetab.ModCreativeModeTab;
 import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,8 +36,12 @@ public class FarmingMod
 
         // Register the commonSetup method for modloading
         Items.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         ModEnchantments.register(modEventBus);
+
+        ModVillagers.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
 
@@ -49,7 +55,9 @@ public class FarmingMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        event.enqueueWork(() -> {
+           ModVillagers.registerPOIs();
+        });
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event)
@@ -60,6 +68,9 @@ public class FarmingMod
         }
         if (event.getTab() == ModCreativeModeTab.TOOLS_TAB) {
             event.accept(Items.BASIC_CARROT_HOE);
+        }
+        if (event.getTab() == ModCreativeModeTab.BLOCKS_TAB) {
+            event.accept(ModBlocks.FARMERS_WORKBENCH);
         }
     }
 
