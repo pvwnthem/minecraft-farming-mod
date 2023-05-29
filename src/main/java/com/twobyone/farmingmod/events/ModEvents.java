@@ -30,14 +30,13 @@ public class ModEvents {
 
 
 
-    public static void onCropBreak(String tier, BlockEvent.BreakEvent event) {
-        ItemStack ENCHANTED_CARROT = new ItemStack(Items.ENCHANTED_CARROT.get());
+    public static void onCropBreak(String tier, BlockEvent.BreakEvent event, ItemStack item) {
         int value = tier.equals("basic") ? 1 : 5;
-        ENCHANTED_CARROT.setCount(value);
+        item.setCount(value);
 
         if (checkRandomChance(50)) {
-            event.getPlayer().getInventory().add(ENCHANTED_CARROT);
-            event.getPlayer().sendSystemMessage(Component.literal("Congratulations! You have received an enchanted carrot."));
+            event.getPlayer().getInventory().add(item);
+            event.getPlayer().sendSystemMessage(Component.literal("Congratulations! You have received an enchanted crop thanks to your hoe!."));
 
         }
 
@@ -52,13 +51,16 @@ public class ModEvents {
             if (helditemname.contains("Hoe")) {
                 String tier =  helditemname.contains("Basic") ? "basic" : "advanced";
                 if(helditemname.contains("Carrot") && blockname.equals("Carrots")) {
-                    onCropBreak(tier, event);
+                    onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_CARROT.get()));
+
                 }
                 if(helditemname.contains("Wheat") && blockname.equals("Wheat Crops")) {
-                    onCropBreak(tier, event);
+                    // Items.ENCHANTED_WHEAT.get() when i add wheat
+                    //onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_CARROT.get()));
                 }
                 if (helditemname.contains("Potato") && blockname.equals("Potatoes")) {
-                    onCropBreak(tier, event);
+                    // Items.ENCHANTED_POTATO.get() when i add potatoes
+                    //onCropBreak(tier, event);
                 }
             }
 
