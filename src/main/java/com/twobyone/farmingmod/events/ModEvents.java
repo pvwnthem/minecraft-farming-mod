@@ -1,5 +1,7 @@
 package com.twobyone.farmingmod.events;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.google.common.collect.ImmutableMap;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -46,22 +49,18 @@ public class ModEvents {
     public static void addCustomTrades(VillagerTradesEvent event) {
         System.out.println("Yup");
         if (event.getType() == ModVillagers.SENIOR_FARMER.get()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            //Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
-            ItemStack book = new ItemStack(net.minecraft.world.item.Items.BOOK);
-            System.out.println(book.isEnchantable() + "adsadas");
+            //ItemStack book = new ItemStack(net.minecraft.world.item.Items.ENCHANTED_BOOK);
+            //EnchantmentInstance enchantment = new EnchantmentInstance(ModEnchantments.HARVESTING.get(), 3);
+            //EnchantmentHelper.setEnchantments(new Map(enchantment, 1), book);
+            //System.out.println(book.getAllEnchantments().values());
 
+            //VillagerTrades.ItemListing trade = new Trade(net.minecraft.world.item.Items.EMERALD, 12, book.getItem().asItem(), 1, 2, 20);
 
-            EnchantmentHelper.setEnchantments(
-                    ImmutableMap.of(ModEnchantments.HARVESTING.get(), 2),
-                    book
-            );
-
-            VillagerTrades.ItemListing trade = new Trade (net.minecraft.world.item.Items.EMERALD, 12,book.getItem() , 1, 2, 20);
-
-            List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
-            list.add(trade);
-            event.getTrades().put(2, list);
+            //List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
+            //list.add(trade);
+            //event.getTrades().put(1, list);
 
 
 
