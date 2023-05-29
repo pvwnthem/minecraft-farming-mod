@@ -161,13 +161,14 @@ public class ModEvents {
 
     public static void onCropBreak(String tier, BlockEvent.BreakEvent event, ItemStack item) {
         int value = tier.equals("basic") ? 1 : 5;
+        int bonus = 0;
         if (event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(ModEnchantments.HARVESTING.get()) != 0) {
-            value += event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(ModEnchantments.HARVESTING.get());
+            bonus += event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(ModEnchantments.HARVESTING.get());
 
         }
         item.setCount(value);
 
-        if (checkRandomChance(50)) {
+        if (checkRandomChance(50 - bonus)) {
             if(event.getPlayer().getInventory().getFreeSlot() != -1) {
                 event.getPlayer().getInventory().add(item);
                 event.getPlayer().sendSystemMessage(Component.literal("Congratulations! An enchanted crop has been sent to your inventory thanks to your hoe!."));
