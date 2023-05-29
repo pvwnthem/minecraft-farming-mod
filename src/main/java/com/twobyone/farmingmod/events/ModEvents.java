@@ -62,7 +62,25 @@ public class ModEvents {
             //list.add(trade);
             //event.getTrades().put(1, list);
 
+            ItemStack ench_carrot = new ItemStack(Items.ENCHANTED_CARROT.get());
+            ItemStack ench_golden_carrot = new ItemStack(Items.ENCHANTED_GOLDEN_CARROT.get());
 
+            VillagerTrades.ItemListing buy_ench_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_carrot.getItem(), 1, 12, 2);
+            VillagerTrades.ItemListing sell_ench_carrot = new Trade(ench_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
+
+            VillagerTrades.ItemListing buy_ench_golden_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_golden_carrot.getItem(), 1, 12, 4);
+            VillagerTrades.ItemListing sell_ench_golden_carrot = new Trade(ench_golden_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
+
+
+            List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
+            list.add(buy_ench_carrot);
+            list.add(sell_ench_carrot);
+            event.getTrades().put(1, list);
+
+            List<VillagerTrades.ItemListing> list2 = event.getTrades().get(2);
+            list2.add(buy_ench_golden_carrot);
+            list2.add(sell_ench_golden_carrot);
+            event.getTrades().put(2, list2);
 
         }
     }
