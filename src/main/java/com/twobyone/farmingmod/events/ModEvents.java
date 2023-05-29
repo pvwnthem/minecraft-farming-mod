@@ -40,9 +40,14 @@ public class ModEvents {
         }
         item.setCount(value);
 
-        if (checkRandomChance(50)) {
-            event.getPlayer().getInventory().add(item);
-            event.getPlayer().sendSystemMessage(Component.literal("Congratulations! You have received an enchanted crop thanks to your hoe!."));
+        if (checkRandomChance(5)) {
+            if(event.getPlayer().getInventory().isEmpty()) {
+                event.getPlayer().getInventory().add(item);
+                event.getPlayer().sendSystemMessage(Component.literal("Congratulations! An enchanted crop has been sent to your inventory thanks to your hoe!."));
+            } else {
+                event.getPlayer().sendSystemMessage(Component.literal("You were awarded a drop but your inventory is full, please clear up some space!"));
+            }
+
 
         }
 
@@ -54,9 +59,8 @@ public class ModEvents {
         if (state.getBlock() instanceof CropBlock) {
             String helditemname = event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getDisplayName().getString();
             String blockname = state.getBlock().getName().getString();
-            System.out.println(helditemname + blockname);
             if (helditemname.contains("Hoe")) {
-                String tier =  helditemname.contains("Basic") ? "basic" : "advanced";
+                String tier = helditemname.contains("Basic") ? "basic" : "advanced";
                 if(helditemname.contains("Carrot") && blockname.equals("Carrots")) {
                     onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_CARROT.get()));
 
