@@ -15,7 +15,7 @@ public class ModEnchantments {
 
     public static RegistryObject<Enchantment> HARVESTING =
             ENCHANTMENTS.register("harvesting",
-                    () -> new Harvesting(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
+                    () -> new Harvesting(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);
     }
