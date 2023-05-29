@@ -17,6 +17,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -165,8 +167,8 @@ public class ModEvents {
         }
         item.setCount(value);
 
-        if (checkRandomChance(5)) {
-            if(event.getPlayer().getInventory().isEmpty()) {
+        if (checkRandomChance(50)) {
+            if(event.getPlayer().getInventory().getFreeSlot() != -1) {
                 event.getPlayer().getInventory().add(item);
                 event.getPlayer().sendSystemMessage(Component.literal("Congratulations! An enchanted crop has been sent to your inventory thanks to your hoe!."));
             } else {
