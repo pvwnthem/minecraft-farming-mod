@@ -1,19 +1,21 @@
 package com.twobyone.farmingmod.events;
+import java.util.Map;
 import java.util.Random;
 
+import com.twobyone.enchants.Harvesting;
+import com.twobyone.enchants.ModEnchantments;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.items.Items;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ObjectHolder;
 
 @Mod.EventBusSubscriber(modid = FarmingMod.MODID)
 public class ModEvents {
@@ -32,6 +34,10 @@ public class ModEvents {
 
     public static void onCropBreak(String tier, BlockEvent.BreakEvent event, ItemStack item) {
         int value = tier.equals("basic") ? 1 : 5;
+        if (event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(ModEnchantments.HARVESTING.get()) != 0) {
+            value += event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(ModEnchantments.HARVESTING.get());
+
+        }
         item.setCount(value);
 
         if (checkRandomChance(50)) {
@@ -39,6 +45,7 @@ public class ModEvents {
             event.getPlayer().sendSystemMessage(Component.literal("Congratulations! You have received an enchanted crop thanks to your hoe!."));
 
         }
+
 
     }
     @SubscribeEvent

@@ -3,5 +3,6 @@
   "creativemode.farming_tab": "2x1's Farming Items",
   "creativemode.tools_tab": "2x1's Farming Tools",
   "item.farmingmod.enchanted_golden_carrot": "Enchanted Golden Carrot",
-  "item.farmingmod.basic_carrot_hoe": "Basic Carrot Hoe"
+  "item.farmingmod.basic_carrot_hoe": "Basic Carrot Hoe",
+  "enchantment.farmingmod.harvesting": "Harvesting"
 }
