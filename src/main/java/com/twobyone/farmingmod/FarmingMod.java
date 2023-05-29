@@ -63,6 +63,7 @@ public class FarmingMod
     {
         if (event.getTab() == ModCreativeModeTab.FARMING_TAB) {
             event.accept(Items.ENCHANTED_CARROT);
+            event.accept(Items.ENCHANTED_GOLDEN_CARROT);
         }
     }
 

@@ -14,21 +14,13 @@ public class Items {
             DeferredRegister.create(ForgeRegistries.ITEMS, FarmingMod.MODID);
 
     public static final RegistryObject<Item> ENCHANTED_CARROT = ITEMS.register("enchanted_carrot",
-            () -> new EnchantedCarrotItem(new Item.Properties()));
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
+    public static final RegistryObject<Item> ENCHANTED_GOLDEN_CARROT = ITEMS.register("enchanted_golden_carrot",
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 
-    public static class EnchantedCarrotItem extends Item {
 
-        public EnchantedCarrotItem(Properties properties) {
-            super(properties);
-        }
-
-        @Override
-        public boolean isFoil(ItemStack stack) {
-            return true;
-        }
-    }
 }
