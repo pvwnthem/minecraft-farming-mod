@@ -1,8 +1,7 @@
 package com.twobyone.farmingmod;
 
 import com.mojang.logging.LogUtils;
-import com.twobyone.enchants.Harvesting;
-import com.twobyone.enchants.ModEnchantments;
+import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.creativetab.ModCreativeModeTab;
 import com.twobyone.farmingmod.items.Items;
 import net.minecraft.client.Minecraft;

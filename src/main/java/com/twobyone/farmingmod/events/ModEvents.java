@@ -1,16 +1,12 @@
 package com.twobyone.farmingmod.events;
-import java.util.Map;
 import java.util.Random;
 
-import com.twobyone.enchants.Harvesting;
-import com.twobyone.enchants.ModEnchantments;
+import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.items.Items;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.level.BlockEvent;

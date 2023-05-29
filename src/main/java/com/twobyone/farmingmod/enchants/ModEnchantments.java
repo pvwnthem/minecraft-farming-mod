@@ -1,4 +1,4 @@
-package com.twobyone.enchants;
+package com.twobyone.farmingmod.enchants;
 
 import com.twobyone.farmingmod.FarmingMod;
 import net.minecraft.world.entity.EquipmentSlot;
