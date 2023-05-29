@@ -1,17 +1,36 @@
 package com.twobyone.farmingmod.events;
+import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.ImmutableMap;
+import com.twobyone.farmingmod.enchants.Harvesting;
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.villager.ModVillagers;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.PumpkinBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.openjdk.nashorn.internal.ir.annotations.Immutable;
 
 @Mod.EventBusSubscriber(modid = FarmingMod.MODID)
 public class ModEvents {
@@ -23,8 +42,101 @@ public class ModEvents {
         return randomNumber == 0;
     }
 
+    @SubscribeEvent
+    public static void addCustomTrades(VillagerTradesEvent event) {
+        System.out.println("Yup");
+        if (event.getType() == ModVillagers.SENIOR_FARMER.get()) {
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+            ItemStack book = new ItemStack(net.minecraft.world.item.Items.BOOK);
+            System.out.println(book.isEnchantable() + "adsadas");
 
 
+            EnchantmentHelper.setEnchantments(
+                    ImmutableMap.of(ModEnchantments.HARVESTING.get(), 2),
+                    book
+            );
+
+            VillagerTrades.ItemListing trade = new Trade (net.minecraft.world.item.Items.EMERALD, 12,book.getItem() , 1, 2, 20);
+
+            List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
+            list.add(trade);
+            event.getTrades().put(2, list);
+
+
+
+        }
+    }
+
+    static class Trade implements VillagerTrades.ItemListing {
+        private final Item buyingItem;
+        private final Item sellingItem;
+        private final int buyingAmount;
+        private final int sellingAmount;
+        private final int maxUses;
+        private final int givenExp;
+        private final float priceMultiplier;
+
+        public Trade(ItemLike buyingItem, int buyingAmount, ItemLike sellingItem, int sellingAmount, int maxUses,
+                     int givenExp) {
+            this.buyingItem = buyingItem.asItem();
+            this.buyingAmount = buyingAmount;
+            this.sellingItem = sellingItem.asItem();
+            this.sellingAmount = sellingAmount;
+            this.maxUses = maxUses;
+            this.givenExp = givenExp;
+            this.priceMultiplier = 0.05F;
+        }
+
+        public MerchantOffer getOffer(Entity entity, RandomSource random) {
+            return new MerchantOffer(new ItemStack(this.buyingItem, this.buyingAmount),
+                    new ItemStack(sellingItem, sellingAmount), maxUses, givenExp, priceMultiplier);
+        }
+    }
+
+    static class ItemsForEmeraldsTrade implements VillagerTrades.ItemListing {
+        private final ItemStack itemStack;
+        private final int emeraldCost;
+        private final int numberOfItems;
+        private final int maxUses;
+        private final int villagerXp;
+        private final float priceMultiplier;
+
+        public ItemsForEmeraldsTrade(Block p_i50528_1_, int p_i50528_2_, int p_i50528_3_, int p_i50528_4_,
+                                     int p_i50528_5_) {
+            this(new ItemStack(p_i50528_1_), p_i50528_2_, p_i50528_3_, p_i50528_4_, p_i50528_5_);
+        }
+
+        public ItemsForEmeraldsTrade(Item p_i50529_1_, int p_i50529_2_, int p_i50529_3_, int p_i50529_4_) {
+            this(new ItemStack(p_i50529_1_), p_i50529_2_, p_i50529_3_, 12, p_i50529_4_);
+        }
+
+        public ItemsForEmeraldsTrade(Item p_i50530_1_, int p_i50530_2_, int p_i50530_3_, int p_i50530_4_,
+                                     int p_i50530_5_) {
+            this(new ItemStack(p_i50530_1_), p_i50530_2_, p_i50530_3_, p_i50530_4_, p_i50530_5_);
+        }
+
+        public ItemsForEmeraldsTrade(ItemStack p_i50531_1_, int p_i50531_2_, int p_i50531_3_, int p_i50531_4_,
+                                     int p_i50531_5_) {
+            this(p_i50531_1_, p_i50531_2_, p_i50531_3_, p_i50531_4_, p_i50531_5_, 0.05F);
+        }
+
+        public ItemsForEmeraldsTrade(ItemStack p_i50532_1_, int p_i50532_2_, int p_i50532_3_, int p_i50532_4_,
+                                     int p_i50532_5_, float p_i50532_6_) {
+            this.itemStack = p_i50532_1_;
+            this.emeraldCost = p_i50532_2_;
+            this.numberOfItems = p_i50532_3_;
+            this.maxUses = p_i50532_4_;
+            this.villagerXp = p_i50532_5_;
+            this.priceMultiplier = p_i50532_6_;
+        }
+
+        public MerchantOffer getOffer(Entity p_221182_1_, RandomSource p_221182_2_) {
+            return new MerchantOffer(new ItemStack(net.minecraft.world.item.Items.EMERALD, this.emeraldCost),
+                    new ItemStack(this.itemStack.getItem(), this.numberOfItems), this.maxUses, this.villagerXp,
+                    this.priceMultiplier);
+        }
+    }
 
 
 

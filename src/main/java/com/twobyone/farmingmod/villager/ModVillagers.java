@@ -1,14 +1,25 @@
 package com.twobyone.farmingmod.villager;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.ibm.icu.impl.locale.XCldrStub;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.block.ModBlocks;
+import com.twobyone.farmingmod.enchants.ModEnchantments;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.CraftingTableBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,6 +27,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Set;
 
 public class ModVillagers {
