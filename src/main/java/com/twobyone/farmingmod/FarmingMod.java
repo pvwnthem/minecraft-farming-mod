@@ -5,8 +5,13 @@ import com.twobyone.farmingmod.block.ModBlocks;
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.creativetab.ModCreativeModeTab;
 import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.mixin.PoiTypesInvoker;
 import com.twobyone.farmingmod.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -17,6 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -56,7 +62,7 @@ public class FarmingMod
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
-           ModVillagers.registerPOIs();
+            PoiTypesInvoker.invokeGetBlockStates(ModBlocks.FARMERS_WORKBENCH.get()).forEach((state) -> PoiTypesInvoker.getTypeByState().put(state, ForgeRegistries.POI_TYPES.getHolder(ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(FarmingMod.MODID, "farmers_workbench"))).get()));
         });
     }
 

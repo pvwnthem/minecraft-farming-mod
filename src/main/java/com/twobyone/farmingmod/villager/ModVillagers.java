@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.ibm.icu.impl.locale.XCldrStub;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.block.ModBlocks;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.level.block.CraftingTableBlock;
@@ -25,9 +26,13 @@ public class ModVillagers {
     public static final RegistryObject<PoiType> FARMERS_WORKBENCH_POI = POI_TYPE_DEFERRED_REGISTER.register("farmers_workbench_poi",
             () -> new PoiType(ImmutableSet.copyOf(ModBlocks.FARMERS_WORKBENCH.get().getStateDefinition().getPossibleStates()),
                     1, 1));
+    public static final RegistryObject<VillagerProfession> SENIOR_FARMER = VILLAGER_PROFESSION_DEFERRED_REGISTER.register("senior_farmer",
+            () -> new VillagerProfession("senior_farmer", x -> x.get() == FARMERS_WORKBENCH_POI.get(),
+                    x -> x.get() == FARMERS_WORKBENCH_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
+                    SoundEvents.VILLAGER_WORK_TOOLSMITH));
     public static void registerPOIs() {
         try {
-            ObfuscationReflectionHelper.findMethod(PoiType.class, "registerBlockState", PoiType.class).invoke(null, FARMERS_WORKBENCH_POI.get());
+            ObfuscationReflectionHelper.findMethod(PoiType.class, "registerBlockStates", PoiType.class).invoke(null, FARMERS_WORKBENCH_POI.get());
         } catch (InvocationTargetException | IllegalAccessException exception) {
             exception.printStackTrace();
         }
