@@ -18,7 +18,15 @@ public class Items {
     public static final RegistryObject<Item> ENCHANTED_GOLDEN_CARROT = ITEMS.register("enchanted_golden_carrot",
             () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> ENCHANTED_POTATO = ITEMS.register("enchanted_potato",
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> ENCHANTED_BAKED_POTATO = ITEMS.register("enchanted_baked_potato",
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
     public static final RegistryObject<HoeItem> BASIC_CARROT_HOE = ITEMS.register("basic_carrot_hoe",
+            () -> new HoeItem(Tiers.BASIC, 1, 4.5f, new Item.Properties()));
+
+    public static final RegistryObject<HoeItem> BASIC_POTATO_HOE = ITEMS.register("basic_potato_hoe",
             () -> new HoeItem(Tiers.BASIC, 1, 4.5f, new Item.Properties()));
 
 
