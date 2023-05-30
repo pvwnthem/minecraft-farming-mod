@@ -6,6 +6,7 @@
   "item.farmingmod.basic_carrot_hoe": "Basic Carrot Hoe",
   "enchantment.farmingmod.harvesting": "Harvesting",
   "block.farmingmod.farmers_workbench": "Farmers Workbench",
-  "entity.minecraft.villager.farmingmod.senior_farmer": "Old Farmer"
-
+  "entity.minecraft.villager.farmingmod.senior_farmer": "Old Farmer",
+  "item.farmingmod.enchanted_baked_potato": "Enchanted Baked Potato",
+  "item.farmingmod.enchanted_potato": "Enchanted Potato"
 }
