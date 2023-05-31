@@ -198,8 +198,8 @@ public class ModEvents {
                     //onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_CARROT.get()));
                 }
                 if (helditemname.contains("Potato") && blockname.equals("Potatoes")) {
-                    // Items.ENCHANTED_POTATO.get() when i add potatoes
-                    //onCropBreak(tier, event);
+
+                    onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_POTATO.get()));
                 }
             }
 
