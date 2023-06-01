@@ -1,10 +1,12 @@
 package com.twobyone.farmingmod.events;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.FarmingMod;
 import com.twobyone.farmingmod.items.ModItems;
+import com.twobyone.farmingmod.util.Utils;
 import com.twobyone.farmingmod.villager.ModVillagers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -35,7 +37,6 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
-        System.out.println("Yup");
         if (event.getType() == ModVillagers.SENIOR_FARMER.get()) {
             //Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
@@ -52,6 +53,8 @@ public class ModEvents {
 
             ItemStack ench_carrot = new ItemStack(ModItems.ENCHANTED_CARROT.get());
             ItemStack ench_golden_carrot = new ItemStack(ModItems.ENCHANTED_GOLDEN_CARROT.get());
+            ItemStack ench_potato = new ItemStack(ModItems.ENCHANTED_POTATO.get());
+            ItemStack ench_baked_potato = new ItemStack(ModItems.ENCHANTED_BAKED_POTATO.get());
 
             VillagerTrades.ItemListing buy_ench_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_carrot.getItem(), 1, 12, 2);
             VillagerTrades.ItemListing sell_ench_carrot = new Trade(ench_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
@@ -59,18 +62,19 @@ public class ModEvents {
             VillagerTrades.ItemListing buy_ench_golden_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_golden_carrot.getItem(), 1, 12, 4);
             VillagerTrades.ItemListing sell_ench_golden_carrot = new Trade(ench_golden_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
 
-            VillagerTrades.ItemListing buy_ench_potato = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_carrot.getItem(), 1, 12, 2);
-            VillagerTrades.ItemListing sell_ench_potato = new Trade(ench_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
+            VillagerTrades.ItemListing buy_ench_potato = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_potato.getItem(), 1, 12, 2);
+            VillagerTrades.ItemListing sell_ench_potato = new Trade(ench_potato.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
 
-            VillagerTrades.ItemListing buy_ench_baked_potato = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_golden_carrot.getItem(), 1, 12, 4);
-            VillagerTrades.ItemListing sell_ench_baked_potato  = new Trade(ench_golden_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
+            VillagerTrades.ItemListing buy_ench_baked_potato = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_baked_potato.getItem(), 1, 12, 4);
+            VillagerTrades.ItemListing sell_ench_baked_potato  = new Trade(ench_baked_potato.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
 
 
             List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
             list.add(buy_ench_carrot);
-            list.add(sell_ench_carrot);
             list.add(buy_ench_potato);
+            list.add(sell_ench_carrot);
             list.add(sell_ench_potato);
+            Utils.shuffleList(list);
             event.getTrades().put(1, list);
 
             List<VillagerTrades.ItemListing> list2 = event.getTrades().get(2);
@@ -78,6 +82,7 @@ public class ModEvents {
             list2.add(sell_ench_golden_carrot);
             list2.add(buy_ench_baked_potato);
             list2.add(sell_ench_baked_potato);
+            Utils.shuffleList(list2);
             event.getTrades().put(2, list2);
 
         }
@@ -100,7 +105,7 @@ public class ModEvents {
             this.sellingAmount = sellingAmount;
             this.maxUses = maxUses;
             this.givenExp = givenExp;
-            this.priceMultiplier = 0.05F;
+            this.priceMultiplier = -0.1F;
         }
 
         public MerchantOffer getOffer(Entity entity, RandomSource random) {
