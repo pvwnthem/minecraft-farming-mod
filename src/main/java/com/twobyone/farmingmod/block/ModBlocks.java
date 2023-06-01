@@ -1,11 +1,10 @@
 package com.twobyone.farmingmod.block;
 
 import com.twobyone.farmingmod.FarmingMod;
-import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CraftingTableBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,7 +30,7 @@ public class ModBlocks {
         return toReturn;
     }
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
-        Items.ITEMS.register(name, () -> new BlockItem(block.get(),
+        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties()));
     }
 

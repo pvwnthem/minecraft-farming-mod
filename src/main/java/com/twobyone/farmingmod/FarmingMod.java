@@ -4,11 +4,10 @@ import com.mojang.logging.LogUtils;
 import com.twobyone.farmingmod.block.ModBlocks;
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.creativetab.ModCreativeModeTab;
-import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.items.ModItems;
 import com.twobyone.farmingmod.mixin.PoiTypesInvoker;
 import com.twobyone.farmingmod.villager.ModVillagers;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +40,7 @@ public class FarmingMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
-        Items.register(modEventBus);
+        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
         ModEnchantments.register(modEventBus);
@@ -69,14 +68,14 @@ public class FarmingMod
     private void addCreative(CreativeModeTabEvent.BuildContents event)
     {
         if (event.getTab() == ModCreativeModeTab.ITEMS_TAB) {
-            event.accept(Items.ENCHANTED_CARROT);
-            event.accept(Items.ENCHANTED_GOLDEN_CARROT);
-            event.accept(Items.ENCHANTED_POTATO);
-            event.accept(Items.ENCHANTED_BAKED_POTATO);
+            event.accept(ModItems.ENCHANTED_CARROT);
+            event.accept(ModItems.ENCHANTED_GOLDEN_CARROT);
+            event.accept(ModItems.ENCHANTED_POTATO);
+            event.accept(ModItems.ENCHANTED_BAKED_POTATO);
         }
         if (event.getTab() == ModCreativeModeTab.TOOLS_TAB) {
-            event.accept(Items.BASIC_CARROT_HOE);
-            event.accept(Items.BASIC_POTATO_HOE);
+            event.accept(ModItems.BASIC_CARROT_HOE);
+            event.accept(ModItems.BASIC_POTATO_HOE);
         }
         if (event.getTab() == ModCreativeModeTab.BLOCKS_TAB) {
             event.accept(ModBlocks.FARMERS_WORKBENCH);

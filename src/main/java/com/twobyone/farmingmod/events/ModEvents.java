@@ -1,41 +1,27 @@
 package com.twobyone.farmingmod.events;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
-import com.google.common.collect.ImmutableMap;
-import com.twobyone.farmingmod.enchants.Harvesting;
 import com.twobyone.farmingmod.enchants.ModEnchantments;
 import com.twobyone.farmingmod.FarmingMod;
-import com.twobyone.farmingmod.items.Items;
+import com.twobyone.farmingmod.items.ModItems;
 import com.twobyone.farmingmod.villager.ModVillagers;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.PumpkinBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.openjdk.nashorn.internal.ir.annotations.Immutable;
 
 @Mod.EventBusSubscriber(modid = FarmingMod.MODID)
 public class ModEvents {
@@ -64,8 +50,8 @@ public class ModEvents {
             //list.add(trade);
             //event.getTrades().put(1, list);
 
-            ItemStack ench_carrot = new ItemStack(Items.ENCHANTED_CARROT.get());
-            ItemStack ench_golden_carrot = new ItemStack(Items.ENCHANTED_GOLDEN_CARROT.get());
+            ItemStack ench_carrot = new ItemStack(ModItems.ENCHANTED_CARROT.get());
+            ItemStack ench_golden_carrot = new ItemStack(ModItems.ENCHANTED_GOLDEN_CARROT.get());
 
             VillagerTrades.ItemListing buy_ench_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_carrot.getItem(), 1, 12, 2);
             VillagerTrades.ItemListing sell_ench_carrot = new Trade(ench_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
@@ -200,7 +186,7 @@ public class ModEvents {
             if (helditemname.contains("Hoe")) {
                 String tier = helditemname.contains("Basic") ? "basic" : "advanced";
                 if(helditemname.contains("Carrot") && blockname.equals("Carrots")) {
-                    onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_CARROT.get()));
+                    onCropBreak(tier, event, new ItemStack(ModItems.ENCHANTED_CARROT.get()));
 
                 }
                 if(helditemname.contains("Wheat") && blockname.equals("Wheat Crops")) {
@@ -209,7 +195,7 @@ public class ModEvents {
                 }
                 if (helditemname.contains("Potato") && blockname.equals("Potatoes")) {
 
-                    onCropBreak(tier, event, new ItemStack(Items.ENCHANTED_POTATO.get()));
+                    onCropBreak(tier, event, new ItemStack(ModItems.ENCHANTED_POTATO.get()));
                 }
             }
 
