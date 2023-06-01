@@ -74,6 +74,7 @@ public class FarmingMod
         }
         if (event.getTab() == ModCreativeModeTab.TOOLS_TAB) {
             event.accept(Items.BASIC_CARROT_HOE);
+            event.accept(Items.BASIC_POTATO_HOE);
         }
         if (event.getTab() == ModCreativeModeTab.BLOCKS_TAB) {
             event.accept(ModBlocks.FARMERS_WORKBENCH);

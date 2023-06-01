@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CHC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "farmingmod:enchanted_baked_potato"
+    },
+    "H": {
+      "item": "minecraft:diamond_hoe"
+    }
+
+  },
+  "result": {
+    "item": "farmingmod:basic_potato_hoe",
+    "count": 1
+  }
+}
