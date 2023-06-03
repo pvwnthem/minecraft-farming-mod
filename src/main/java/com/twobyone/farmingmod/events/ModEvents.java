@@ -38,19 +38,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
         if (event.getType() == ModVillagers.SENIOR_FARMER.get()) {
-            //Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-
-            //ItemStack book = new ItemStack(net.minecraft.world.item.Items.ENCHANTED_BOOK);
-            //EnchantmentInstance enchantment = new EnchantmentInstance(ModEnchantments.HARVESTING.get(), 3);
-            //EnchantmentHelper.setEnchantments(new Map(enchantment, 1), book);
-            //System.out.println(book.getAllEnchantments().values());
-
-            //VillagerTrades.ItemListing trade = new Trade(net.minecraft.world.item.Items.EMERALD, 12, book.getItem().asItem(), 1, 2, 20);
-
-            //List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
-            //list.add(trade);
-            //event.getTrades().put(1, list);
-
             ItemStack ench_carrot = new ItemStack(ModItems.ENCHANTED_CARROT.get());
             ItemStack ench_golden_carrot = new ItemStack(ModItems.ENCHANTED_GOLDEN_CARROT.get());
             ItemStack ench_potato = new ItemStack(ModItems.ENCHANTED_POTATO.get());
