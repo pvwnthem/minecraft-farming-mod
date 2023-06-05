@@ -6,7 +6,7 @@
       "tag": "minecraft:planks"
     },
     "S": {
-      "item": "farmingmod:enchanted_carrot"
+      "item": "minecraft:carrot"
     }
   },
   "pattern": [
