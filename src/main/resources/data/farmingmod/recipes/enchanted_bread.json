@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "farmingmod:enchanted_wheat"
+    }
+
+  },
+  "result": {
+    "item": "farmingmod:enchanted_bread",
+    "count": 1
+  }
+}

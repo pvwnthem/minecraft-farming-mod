@@ -23,6 +23,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> ENCHANTED_BAKED_POTATO = ITEMS.register("enchanted_baked_potato",
             () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> ENCHANTED_WHEAT = ITEMS.register("enchanted_wheat",
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> ENCHANTED_BREAD = ITEMS.register("enchanted_bread",
+            () -> new ItemPropertyClasses.EnchantmentGlintItem(new Item.Properties()));
+
     public static final RegistryObject<HoeItem> BASIC_CARROT_HOE = ITEMS.register("basic_carrot_hoe",
             () -> new HoeItem(Tiers.BASIC, -1, 0f, new Item.Properties()));
 

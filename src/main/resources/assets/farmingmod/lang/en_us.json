@@ -10,5 +10,7 @@
   "entity.minecraft.villager.farmingmod.senior_farmer": "Old Farmer",
   "item.farmingmod.enchanted_baked_potato": "Enchanted Baked Potato",
   "item.farmingmod.enchanted_potato": "Enchanted Potato",
-  "item.farmingmod.basic_potato_hoe": "Basic Potato Hoe"
+  "item.farmingmod.basic_potato_hoe": "Basic Potato Hoe",
+  "item.farmingmod.enchanted_wheat": "Enchanted Wheat",
+  "item.farmingmod.enchanted_bread": "Enchanted Bread"
 }
