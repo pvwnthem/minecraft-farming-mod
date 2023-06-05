@@ -72,6 +72,8 @@ public class FarmingMod
             event.accept(ModItems.ENCHANTED_GOLDEN_CARROT);
             event.accept(ModItems.ENCHANTED_POTATO);
             event.accept(ModItems.ENCHANTED_BAKED_POTATO);
+            event.accept(ModItems.ENCHANTED_WHEAT);
+            event.accept(ModItems.ENCHANTED_BREAD);
         }
         if (event.getTab() == ModCreativeModeTab.TOOLS_TAB) {
             event.accept(ModItems.BASIC_CARROT_HOE);
