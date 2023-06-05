@@ -42,6 +42,8 @@ public class ModEvents {
             ItemStack ench_golden_carrot = new ItemStack(ModItems.ENCHANTED_GOLDEN_CARROT.get());
             ItemStack ench_potato = new ItemStack(ModItems.ENCHANTED_POTATO.get());
             ItemStack ench_baked_potato = new ItemStack(ModItems.ENCHANTED_BAKED_POTATO.get());
+            ItemStack ench_wheat = new ItemStack(ModItems.ENCHANTED_WHEAT.get());
+            ItemStack ench_bread = new ItemStack(ModItems.ENCHANTED_BREAD.get());
 
             VillagerTrades.ItemListing buy_ench_carrot = new Trade(net.minecraft.world.item.Items.EMERALD, 2, ench_carrot.getItem(), 1, 12, 2);
             VillagerTrades.ItemListing sell_ench_carrot = new Trade(ench_carrot.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 1, 12, 2);
@@ -55,12 +57,19 @@ public class ModEvents {
             VillagerTrades.ItemListing buy_ench_baked_potato = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_baked_potato.getItem(), 1, 12, 4);
             VillagerTrades.ItemListing sell_ench_baked_potato  = new Trade(ench_baked_potato.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
 
+            VillagerTrades.ItemListing buy_ench_wheat = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_wheat.getItem(), 1, 12, 4);
+            VillagerTrades.ItemListing sell_ench_wheat  = new Trade(ench_wheat.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
+
+            VillagerTrades.ItemListing buy_ench_bread = new Trade(net.minecraft.world.item.Items.EMERALD, 16, ench_bread.getItem(), 1, 12, 4);
+            VillagerTrades.ItemListing sell_ench_bread  = new Trade(ench_bread.getItem(), 1, net.minecraft.world.item.Items.EMERALD, 8, 12, 4);
 
             List<VillagerTrades.ItemListing> list = event.getTrades().get(1);
             list.add(buy_ench_carrot);
             list.add(buy_ench_potato);
             list.add(sell_ench_carrot);
             list.add(sell_ench_potato);
+            list.add(buy_ench_wheat);
+            list.add(sell_ench_wheat);
             Utils.shuffleList(list);
             event.getTrades().put(1, list);
 
@@ -69,6 +78,9 @@ public class ModEvents {
             list2.add(sell_ench_golden_carrot);
             list2.add(buy_ench_baked_potato);
             list2.add(sell_ench_baked_potato);
+            list2.add(buy_ench_bread);
+            list2.add(sell_ench_bread);
+
             Utils.shuffleList(list2);
             event.getTrades().put(2, list2);
 
